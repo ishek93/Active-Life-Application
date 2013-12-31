@@ -1,0 +1,631 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>Active Life Company</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+<!--Jquery doc-->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+
+   	<script src="cordova-2.7.0.js"></script>
+	
+<!--Validations for the forms -->
+      	<script src="./js/jquery.validate.js"></script>
+      	<script src="./js/additional-methods.min.js"></script>
+      	<script src="./js/customvalidation.js"></script>
+	
+<!--Get map functionality -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+<!--form validation, advanced search, loading image -->
+<script src="./js/own/activelifeScripts.js"></script>
+
+<!--database, phonegap device, get type of device, save hostel -->
+<script src="./js/own/Functions.js"></script>
+
+<!--Get events from api -->
+<script src="./js/own/getEvents.js"></script>
+
+<!--Get photos from api -->
+<script src="./js/own/getPhotos.js"></script>
+
+<!--Locate my hostel button -->
+<script src="./js/own/hostelMaps.js"></script>
+
+<!--Posting the 3 forms -->
+<script src="./js/own/PostFeedbackPhotoVideoForm.js"></script>
+
+<!--base 64 for video and photo -->
+<script src="./js/own/VideoPhotoBase64Functions.js"></script>
+
+<!--Provide my own css -->
+<link rel="stylesheet" href="./css/OwnStyle.css" />
+
+
+</head> 
+
+
+<body>
+
+<div data-role="page" id="splash">
+ 			<div data-role="header" data-theme="b" data-position="fixed">
+<div id="loadingCube"><img src="./css/images/icons/teddy_bear.png"></div>
+			</div> <!--footer -->
+    <div data-role="content">
+						<img src="./images/ActiveLife-Logo.jpg" width="100%" >
+
+	
+    </div>
+<div id="backgroundSplash">
+
+ </div>
+ 			<div data-role="footer" data-theme="b" data-position="fixed">
+<div id="loadingCube"><img src="./css/images/icons/teddy_bear.png"></div>
+			</div> <!--footer -->
+ </div>
+ 
+ 
+<!--Main page -->
+<div data-role="page" id="Home">
+ 
+	<div data-role="header" data-position="fixed" data-theme="b">
+<h1>Home</h1>
+
+	</div><!-- /header -->
+		<div data-role="content">
+						<img src="./images/ActiveLife-Logo.jpg" width="100%" >
+			<div id="section1" class="formsection" >
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#Products" data-role="button" class="MainMenu" data-transition="slide"> <!-- Start Hyperlink -->
+						<img src="./css/images/icons/product_design.png" width="40" height="40">
+						<h5>Products</h5>
+						</a> <!-- End Hyperlink -->
+					</div>
+
+					<div class="ui-block-b"> 
+						<a data-role="button" id="Savehostel" class="MainMenu" data-transition="slide">
+						<img src="./css/images/icons/hostel.png" width="40" height="40">
+						<h5>Save Hostel</h5>
+						</a> 
+					</div>
+				</div>
+				
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#LocateHostel" data-role="button" class="MainMenu" data-transition="slide"> 
+						<img src="./css/images/icons/maps.png" width="40" height="40">
+						<h5>Locate Hostel</h5>
+						</a> 
+					</div>
+
+					<div class="ui-block-b">
+						<a href="#Event" data-role="button" class="MainMenu" id="getEvents" data-transition="slide">
+						<img src="./css/images/icons/events.png" width="40" height="40">
+						<h5>Show events</h5>
+						</a> 
+					</div>
+				</div>
+
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#DisplayPhoto" data-role="button" class="MainMenu" id="getPhotos" data-transition="slide"> 
+						<img src="./css/images/icons/jpeg_image.png" width="40" height="40">
+						<h5>Show photos</h5>
+						</a> 
+					</div>
+
+					<div class="ui-block-b">
+						<a href="#PostVideo" data-role="button" class="MainMenu" data-transition="slide"> 
+						<img src="./css/images/icons/movies.png" width="40" height="40">
+						<h5>Post Video</h5>
+						</a> 
+					</div>
+				</div>
+
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#PostPhoto" data-role="button" class="MainMenu" data-transition="slide"> 
+						<img src="./css/images/icons/camera.png" width="40" height="40">
+						<h5>Post Photo</h5>
+						</a> 
+					</div>
+
+				
+				</div>
+			
+		</div> <!--Section 1 -->
+<div style="padding-bottom:30px"></div>
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+		</div><!-- Content-->
+</div><!-- End of Page -->
+
+
+
+<!--Start of the products page -->
+<div data-role="page" id="Products" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>Products</h1>
+	</div><!-- /header -->
+
+        <div data-role="content" id="listofproducts" class="EachPage">
+        <h4 id="Results"></h4>
+				<div>
+	
+        <a href="#advancedsearch" data-role="button" data-rel="popup" data-theme="b" data-rel="back">Advanced Search</a>
+        </div>
+		<div style="padding-bottom:10px;"></div>
+
+			<ul data-role="listview"  data-filter="true" data-inset="true" data-filter-placeholder="Search Items..." data-autodividers="true">
+    
+    <div style="width:250px;" data-position-to="window" data-role="popup" id="advancedsearch" class="datasearch" >
+	<a href="#" data-rel="back" data-role="button" data-theme="b" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+    <div data-role="content">
+    <fieldset>
+    		<label for="size"><h4>Size: </h4></label>
+    		<input type="range" name="size" id="size" min="1" max="14" data-highlight="true">
+    </fieldset> 
+    
+
+    	<h4> Colours </h4>
+        <select id="allColours" name="colours" data-native-menu="false">
+
+				<option value="" selected="selected">Select Colour</option>pizz
+        			<option value="Black">Black</option>
+						<option value="Blue">Blue</option>
+						<option value="Brown">Brown</option>
+						<option value="Grey">Grey</option>
+						<option value="Green">Green</option>
+                        <option value="Red">Red</option>
+                        <option value="Pink">Pink</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="White">White</option>
+                        </select>
+
+
+    
+    <fieldset>
+   
+		<label for="catergories"><h4>Categories</h4></label>
+
+			<select id="catergories" name="category" data-native-menu="false" />
+				<option value="" selected="selected">Select Categories</option>
+						<option value="Boots">Boots</option>
+						<option value="Back Pack">Back Pack</option>
+						<option value="Accessories">Accessories</option>
+						<option value="Watch">Watch</option>
+						<option value="Hat">Hat</option>
+			</select>
+
+    </fieldset>
+    <fieldset style="padding-top:10px;">
+    
+     <div class="ui-grid-a">
+    	<div class="ui-block-a">
+    	<button class="Search" data-theme="b" >Search</button>
+    	</div>
+    	
+    	<div class="ui-block-b">
+    	<button class="Reset" data-theme="b" >Reset</button>
+    	</div>
+    </div>
+    
+    </fieldset>
+</div>
+    	</div>
+	</div>
+
+
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+
+
+<!--This is the master page for each product-->
+<!--Showing up all the information on each products -->
+<div data-role="page" id="detailinfo" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b"  >
+		<h4>Product</h4>
+	</div><!-- /header -->
+	
+		<div data-role="content" class="EachPage"> 	
+			<div id="section2" class="formsection" > 
+			<div id="productSummary">	
+				<!--Start information here from Javascript -->
+			</div>	
+
+	
+		</div> <!--Section 6 -->
+			
+		</div><!-- /content -->
+
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+<!---------------------------Hostal ----------------------->
+<div data-role="page" id="LocateHostel" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>Hostel</h1>
+	</div><!-- /header -->
+
+		<div data-role="content" class="EachPage">
+		<div id="section3" class="formsection" >
+		<h3>Map </h3>
+		
+		   <div id="map-canvas" style=" display: block; margin-left: auto; margin-right: auto;height:200px; width:200px"></div>
+<div id="directions-panel"></div>
+	
+		   <button id="CurrentLocation" data-theme="b" >Show current Location</button>		   
+		   <button id="GetDirection" data-theme="b" >Show direction</button>
+
+		   <label for="travelModes"><h3>Select travel mode: </h3></label>
+		<select id="travelModes">
+      <option value="DRIVING">Driving</option>
+      <option value="WALKING">Walking</option>
+      <option value="BICYCLING">Bicycling</option>
+      <option value="TRANSIT">Transit</option>
+    </select>
+    </div>
+		</div><!-- /content -->
+
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+<!--Event-->
+<div data-role="page" id="Event" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b"  >
+		<h1>Events</h1>
+	</div><!-- /header -->
+	
+			<div data-role="content" id="result" class="EachPage">
+<div id="LoadingImage" style="display: none"><img src='./css/images/ajax-loader.gif' /><h2>Loading...<h2> </div>
+		<h3>Upcoming Events/Activities</h3>
+<div id="error2"></div>
+
+
+</div>	
+        <div style="padding-bottom:50px">
+	
+</div>		
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+<!--------------------------Feedback----------------------->
+<div data-role="page" id="Feedback" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>Feedback Form</h1>
+	</div><!-- /header -->
+		<div data-role="content" class="EachPage">	
+		<div id="section4" class="formsection" > 
+		<form id="feedbackform" name="feedbackform">
+        <div data-role="fieldcontain">
+		<label for="name" style="padding-top:5px; font-weight:bold;"><span style="font-weight: bold;color: #CC0000">*</span>&nbsp;Name</label>
+		<input type="text" id="name" name="name">
+		</div>
+        
+        <div data-role="fieldcontain">
+		<label for="email" style="padding-top:5px ; font-weight:bold;"><span style="font-weight: bold;color: #CC0000">*</span>&nbsp;Email</label>
+		<input type="email" id="email" name="email">
+		</div>
+        
+        <div data-role="fieldcontain">
+		<label for="comment" style="padding-top:5px; font-weight:bold;"><span style="font-weight: bold;color: #CC0000">*</span>&nbsp;Comments</label>
+		<input type="text" id="comment" name="comment" >
+		</div>
+        
+        
+		<input type="text" id="device" name="device" val="" style="display:none;">
+		
+		<button id="feedbackSubmit">Submit Feedback</button>
+		</form>
+		</div>
+		</div><!-- /content -->
+
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+
+<!---------------------------Display Photo----------------------->
+<div data-role="page" id="DisplayPhoto" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>Display Photo</h1>
+	</div><!-- /header -->
+        <div data-role="content" class="EachPage" id="resultPhotos">
+<div id="LoadingImage" style="display: none"><img src='./css/images/ajax-loader.gif' /><h2>Loading...<h2> </div>
+		<h3>Photographs</h3>
+		<div id="error1"></div>
+</div>
+        <div style="padding-bottom:50px">
+	
+</div>
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+<!--------------------------- ABOUT PAGE ----------------------->
+<div data-role="page" id="About" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>About</h1>
+	</div><!-- /header -->
+
+			<div data-role="content" class="EachPage">	
+				<div id="section5" class="formsection" >
+					<ul data-role="listview" data-inset="true">
+						<li data-icon="false" id="Company" ><a href="#company" data-transition="slide">Company</a>
+						<li data-icon="false" id="Contact"><a href="#contact" data-transition="slide">Contact information</a>
+					</ul>
+			</div>
+
+				<div data-role="footer" data-theme="b"  data-position="fixed">
+					<div data-role="navbar">
+						<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+						</ul>
+					</div><!-- /navbar -->
+				</div> <!--footer -->
+			</div><!--Content -->
+</div><!-- /page -->
+
+
+
+<!--Information about the company-->
+<div data-role="page" id="company" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b">
+		<h4>Active Life</h4>
+	</div><!-- /header -->
+	
+		<div data-role="content" class="EachPage">
+		
+			<div id="section6" class="formsection" >
+				<h3> Active Life is a specialist outdoor clothing supplier with its head quarters based in Sunderland, UK</h3>
+			<div class="ui-grid-a">
+				<div class="ui-block-a">
+					<img src="./css/images/icons/company.png" style="box-shadow: 5px 5px 5px #888888; max-width:100% !important; max-height:100% !important;" >
+				</div>
+				
+				<div class="ui-block-b" style="padding-down:30px;">
+
+				</div>
+			</div><!--Grid A -->
+			</div><!--Content-->
+		</div><!--Section 9 -->
+
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+</div><!-- End of Page -->
+
+
+
+
+<!--Contact information -->
+<div data-role="page" id="contact" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b">
+		<h4>Contact</h4>
+	</div><!-- /header -->
+	
+		<div data-role="content" class="EachPage">	
+			<div id="section7" class="formsection" >
+				<h2>If you have any questions or queries, please contact us through email or telephone.</h2>
+				<h3> Email: Activelife@gmail.com <h3>
+				<h3> Tel: 0191 4493854 </h3>
+
+			
+		</div> <!--Section 10 -->
+ 
+ 
+		<div data-role="footer" data-theme="b"  data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+				</ul>
+			</div><!-- /navbar -->
+		</div> <!--footer -->
+	</div><!--Content -->
+</div><!-- End of Page -->
+
+
+
+
+
+<!--------------------------- Post Video ----------------------->
+<div data-role="page" id="PostVideo" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b" >
+		<h1>Post Video</h1>
+	</div><!-- /header -->
+
+		<div data-role="content" class="EachPage">
+			<div id="section8" class="formsection" >
+            
+            <form id="formvideo" name="formvideo">
+            <div data-role="fieldcontain">
+            <label for="name" style="padding-top:5px; font-weight:bold;"><span style="font-weight: bold;color: #CC0000">*</span>&nbsp;Name:</label>
+            <input type="text" id="name" name="name">
+			</div>
+			<input type="text" id="videodata" name="videodata" style="display:none;">
+            <video width="200" height="200" controls='controls' id="playload" > <source id="video" src="" type="video/mp4"> </video>
+				<h4>Please share a 5 second video to be posted on the company website </h4>
+				<input type="button" onclick="captureVideoRipple();" value="Show Video"> 
+		<button id="postvideo">Send video</button>
+			</div>
+		</form>
+
+<!-- Footer-->
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+		</div><!-- /content -->	
+</div><!-- /page -->
+
+
+
+
+
+
+<!-- Start of PostPhoto page -->
+<div data-role="page" id="PostPhoto" data-add-back-btn="true" data-back-btn-text="Back">
+
+	<div data-role="header" data-theme="b">
+		<h1>Post photo</h1>
+	</div><!-- /header -->
+
+		<div data-role="content" class="EachPage">
+			<div id="section9" class="formsection">
+		    
+		<form id="photoform" name="photoform">
+        <div data-role="fieldcontain">
+		<label for="name" style="padding-top:5px; font-weight:bold;"><span style="font-weight: bold;color: #CC0000">*</span>&nbsp;Name:</label>
+		<input type="text" id="name" name="name" >
+        </div>
+        
+	<input type="text" id="photodata" name="photodata" style="display:none;">
+		
+		<h4>Current photograph</h4>
+		<img style="display: block; margin-left: auto; margin-right: auto; display:none;width:200px;height:200px;" id="smallImage" src="" />
+			<input type="button" onclick="capturePhotoRipple();" value="Get Photo" >
+		<button id="SentPhotoform">Sent</button>	
+        </form>
+
+
+
+
+<!-- Footer-->
+			<div data-role="footer" data-theme="b"  data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#Home" data-icon="home" data-transition="slide">Home</a></li>
+						<li><a href="#Products" data-icon="star" data-transition="slide">Products</a></li>
+						<li><a href="#Feedback" data-icon="edit" data-transition="slide">Feedback</a></li>
+						<li><a href="#About" data-icon="info" data-transition="slide">About us</a></li>
+					</ul>
+				</div><!-- /navbar -->
+			</div> <!--footer -->
+				</div><!-- /content -->
+</div><!-- /page -->
+ 
+</body>
+</html>

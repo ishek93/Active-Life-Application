@@ -1,0 +1,193 @@
+#backgroundSplash{
+background-image:url('./images/icons/1386665096_T-shirt.png');
+background-repeat:no-repeat;
+
+    width: 230px;
+    height: 250px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+#loadingCube{
+width:50px;
+height:50px;
+background:red;
+   border-radius: 40px;
+box-shadow: 5px 5px 5px #888888;
+position:relative;
+
+-webkit-animation:myfirst 5s linear 0s infinite alternate;
+}
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {background:red; left:0px; top:0px;}
+100%  {background:yellow; left:200px; top:0px;}
+}
+
+#dateto{
+float:left;
+font-size:13px;
+padding-top:6px;
+text-transform:uppercase;
+color:red;
+}
+
+.photosli{
+display:inline;
+padding:10px;
+}
+
+#LoadingImage{
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+#LoadingImages{
+    width: 100px;
+    height: 100px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+
+
+.Events {
+font-weight:bold;
+margin-bottom:10px;
+list-style-type:none;
+border-radius:10px;
+font-colour:black;
+text-shadow:0 0 0 #333;
+
+}
+
+#result{
+padding:20px;
+}
+
+#resultPhotos{
+padding:20px;
+}
+
+.MainMenu {
+
+width:90%;
+height:100px;
+background-color: #6699FF;
+border-radius:10px;
+
+}
+
+a 
+{
+text-decoration:none;
+text-align:center;
+
+}
+
+h6.ui-li-heading{
+font-size:12px;
+text-align:left;
+}
+
+.ProductImage{
+padding-top:5px;
+padding-left:10px;
+width:70px;
+height:70px;
+}
+.formsection
+{
+	/*Border around each section on form*/
+	border-bottom: #828282;
+	border-bottom: rgba(130, 130, 130, .3);
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+    background-color:#EAECF5;
+    border-radius: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 2px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/*change the background color to white*/
+.ui-page {
+background:#ffffff !important;
+}
+
+#title{
+text-align:center;
+}
+
+.Image{
+box-shadow: 10px 10px 5px #888888;
+transform:skew(-5deg,-5deg);
+-webkit-transform:skew(-5deg,-5deg); /* Safari and Chrome */
+}
+
+.idTitle{
+text-align:center;
+}
+
+.OneProduct{
+text-align:center;
+}
+
+.EachPage{
+padding-top:20px;
+padding-bottom:60px;
+}
+      #directions-panel {
+        height: 100%;
+        float: right;
+        width: 390px;
+        overflow: auto;
+      }
+
+#map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      
+      #directions-panel {
+          float: none;
+          width: auto;
+        }
+		
+		label.error {
+
+display:block;
+color: red;
+font-weight:bold;
+
+padding-top:4px;
+
+}
+
+
+
+/*For Hidden Form Sections*/
+.hidden {
+    display:none;   
+}?
